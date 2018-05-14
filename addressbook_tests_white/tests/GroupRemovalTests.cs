@@ -13,6 +13,7 @@ namespace addressbook_tests_white
         [Test]
         public void GroupRemovalTest()
         {
+            app.Groups.CreateGroupIfItIsOne();
             List<GroupData> oldGroups = app.Groups.GetGroupList();
 
 

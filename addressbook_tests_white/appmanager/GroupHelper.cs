@@ -20,6 +20,38 @@ namespace addressbook_tests_white
         {
         }
 
+
+        public void CreateGroupIfItIsOne()
+        {
+            if (!GroupIfItIsOne())
+            {
+                GroupData CreatedNewGroup = new GroupData()
+                {
+                    Name = "CreatedNewGroup"
+                };
+                Create(CreatedNewGroup);
+            }
+            
+        }
+
+        private bool GroupIfItIsOne()
+        {
+            Window dialogue = OpenGroupsDialogue();
+            Tree tree = dialogue.Get<Tree>("uxAddressTreeView");
+            TreeNode root = tree.Nodes.First();
+            if (root.Nodes.Count == 1)
+            {
+                CloseGroupDialogue(dialogue);
+                return false;
+            }
+            else
+            {
+                CloseGroupDialogue(dialogue);
+                return true;
+            }
+
+        }
+
         public void Modify(GroupData newData)
         {
             Window dialogue = OpenGroupsDialogue();
@@ -43,7 +75,7 @@ namespace addressbook_tests_white
         }
 
 
-        public void Add(GroupData newGroup)
+        public void Create(GroupData newGroup)
         {
             Window dialogue = OpenGroupsDialogue();
             dialogue.Get<Button>("uxNewAddressButton").Click();
@@ -87,5 +119,6 @@ namespace addressbook_tests_white
         {
             dialogue.Get<Button>("uxCloseAddressButton").Click();
         }
+
     }
 }

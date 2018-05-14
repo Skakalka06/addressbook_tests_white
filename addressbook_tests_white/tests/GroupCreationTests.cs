@@ -17,7 +17,7 @@ namespace addressbook_tests_white
                 Name = "test"
             };
 
-            app.Groups.Add(newGroup);
+            app.Groups.Create(newGroup);
 
             List<GroupData> newGroups = app.Groups.GetGroupList();
             oldGroups.Add(newGroup);

@@ -13,6 +13,7 @@ namespace addressbook_tests_white
         [Test]
         public void GroupModificationTest()
         {
+            
             List<GroupData> oldGroups = app.Groups.GetGroupList();
 
             GroupData newData = new GroupData()
